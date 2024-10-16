@@ -21,12 +21,12 @@ export default function Home() {
   // Updated verify function with navigation on success
   const verify = async () => {
     try {
-      const appid = "3a073e84-457b-421a-985c-9d55ba11dd4c";
+      const appid = "10369363-9cbb-4c50-910a-d701c89ff3cf";
       const connector = new TransgateConnect(appid);
       const isAvailable = await connector.isTransgateAvailable();
 
       if (isAvailable) {
-        const schemaId = "743b7b43aee64e5ca611e5fd13094a48";
+        const schemaId = "b800722b7dd2449e9d0b441ab45f5be6";
         const res = await connector.launch(schemaId);
 
         // Perform any on-chain or off-chain verification
@@ -47,12 +47,12 @@ export default function Home() {
   // Updated generate function with navigation on success
   const generate = async () => {
     try {
-      const appid = "3a073e84-457b-421a-985c-9d55ba11dd4c";
+      const appid = "10369363-9cbb-4c50-910a-d701c89ff3cf";
       const connector = new TransgateConnect(appid);
       const isAvailable = await connector.isTransgateAvailable();
 
       if (isAvailable) {
-        const schemaId = "743b7b43aee64e5ca611e5fd13094a48";
+        const schemaId = "b800722b7dd2449e9d0b441ab45f5be6";
         const res = await connector.launch(schemaId);
 
         // Perform on-chain or off-chain proof generation
