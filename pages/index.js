@@ -80,7 +80,7 @@ export default function Home() {
           This app checks if you have a valid account with Mowblox.
         </p>
         <Image
-          className="absolute lg:right-48 -z-10 sm:top-0 lg:-mt-80 "
+          className="absolute lg:right-48 -z-10 sm:top-0"
           src="/astro2.jpg" 
           alt="astronaut logo"
           width={800}
