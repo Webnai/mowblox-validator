@@ -74,13 +74,13 @@ export default function Home() {
     <div
       className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] overflow-hidden relative`}
     >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start ">
+      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start text-center ">
         <h1 className="text-4xl font-bold ">Mowblox Account Validation</h1>
         <p className="text-lg">
           This app checks if you have a valid account with Mowblox.
         </p>
         <Image
-          className="absolute right-48 -z-10 -mt-80 "
+          className="absolute lg:right-48 -z-10 sm:top-0 lg:-mt-80 "
           src="/astro2.jpg" 
           alt="astronaut logo"
           width={800}
