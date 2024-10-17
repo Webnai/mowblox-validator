@@ -26,7 +26,7 @@ export default function VerificationSuccess() {
       style={{ backgroundImage: 'url("/error.jpg")' }}
     >
       <h1 className="text-2xl font-bold mb-4">OOps! Something Went Wrong!</h1>
-      <p className="font-bold mb-4 w-[30%] text-center">You don't have or Mowblox account or don't have the <span className="text-[#CDFA6C]">Zkpass TransGate</span> extension installed on your browser</p>
+      <p className="font-bold mb-4 w-[30%] text-center">You don't have a Mowblox account or don't have the <span className="text-[#CDFA6C]">Zkpass TransGate</span> extension installed on your browser</p>
       <button
         onClick={handleGoBack}
         className="border py-2 px-4 rounded-xl mb-20"
