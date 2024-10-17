@@ -1,0 +1,33 @@
+{
+    "issuer": "Mowblox",
+    "desc": "A platform to invest in Crypto Tokens and Learn",
+    "website": "https://mowblox.com",
+    "APIs": [
+      {
+        "host": "cms.mowblox.com",
+        "intercept": {
+          "url": "api/users/me",
+          "method": "GET",
+          "queryParams": {
+            "populate": "role"
+          }
+        },
+        "assert": [
+          {
+            "key": "blocked",
+            "value": "false",
+            "operation": "="
+          }
+        ],
+        "nullifier": "id"
+      }
+    ],
+    "HRCondition": [
+      "User has a Mowblox account and it is not blocked"
+    ],
+    "tips": {
+      "message": "When you successfully log in, please click the 'Start' button to initiate the verification process."
+    }
+  }
+  
+  
