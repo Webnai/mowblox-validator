@@ -25,8 +25,8 @@ export default function VerificationSuccess() {
       className={`${geistSans.variable} ${geistMono.variable} min-h-screen flex justify-center bg-cover bg-center items-center flex-col font-[family-name:var(--font-geist-sans)]`}
       style={{ backgroundImage: 'url("/error.jpg")' }}
     >
-      <h1 className="text-2xl font-bold text-">OOps! Something Went Wrong!</h1>
-      <p className="font-bold">Make sure you have the <span className="text-[#CDFA6C]">Zkpass TransGate</span> extension installed</p>
+      <h1 className="text-2xl font-bold mb-4">OOps! Something Went Wrong!</h1>
+      <p className="font-bold mb-4 w-[30%] text-center">Either you don't have or Mowblox account or don't have the <span className="text-[#CDFA6C]">Zkpass TransGate</span> extension installed</p>
       <button
         onClick={handleGoBack}
         className="border py-2 px-4 rounded-xl mb-20"
