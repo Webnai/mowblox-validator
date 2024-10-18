@@ -1,6 +1,8 @@
 import localFont from "next/font/local";
-import { useRouter } from "next/router";
+import JSONPretty from "react-json-pretty";
+import "react-json-pretty/themes/monikai.css";
 
+// Load local fonts
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -13,22 +15,42 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export default function VerificationSuccess({ validatorAddress , handleGoBack }) { 
-
+export default function VerificationSuccess({
+  handleGoBack,
+  res,
+}) {
   return (
     <div
-      className={`${geistSans.variable} ${geistMono.variable} min-h-screen flex justify-center bg-cover bg-center text-center items-center flex-col font-[family-name:var(--font-geist-sans)]`}
-      style={{ backgroundImage: 'url("/success.jpg")' }}
+      className={`${geistSans.variable} ${geistMono.variable} min-h-screen flex justify-center items-center flex-col text-center p-6 font-[family-name:var(--font-geist-sans)]`}
+      style={{
+        backgroundImage: 'url("/success.jpg")',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
     >
-      <h1 className="sm:text-lg lg:text-7xl font-bold">Verification Successful!</h1>
-      <p className="items-center">
+      <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">
+        Verification Successful!
+      </h1>
+
+      <p className="text-lg text-white mb-4">
         Thank you for verifying your Mowblox account with{" "}
-        <span className=" font-bold text-2xl text-[#CDFA6C]">Zkpass</span>
+        <span className="font-bold text-2xl text-[#CDFA6C]">Zkpass</span>
       </p>
-      <p className="mt-4 mb-4">Validator Address: {validatorAddress}</p>
+
+      <div className="w-full max-w-4xl mb-6 bg-[#F250F5]/30 p-4 rounded-lg shadow-lg overflow-x-auto backdrop-blur-lg border border-[#ffffff40]">
+        <h2 className="text-2xl font-semibold mb-4">Verification Response:</h2>
+        <JSONPretty
+          id="json-pretty"
+          style={{ fontSize: "1.1em", textAlign: "start" }}
+          data={res}
+          mainStyle="padding:1em"
+          valueStyle="font-size:1.5em"
+        ></JSONPretty>
+      </div>
+
       <button
         onClick={handleGoBack}
-        className="border py-2 px-4 rounded-xl"
+        className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-xl font-semibold transition duration-300 ease-in-out"
       >
         Go Back
       </button>

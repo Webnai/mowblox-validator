@@ -4,7 +4,7 @@ import TransgateConnect from "@zkpass/transgate-js-sdk";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Web3 from "web3";
-import VerificationSuccess from './verify-success'; 
+import VerificationSuccess from './verify-success';
 
 // Local fonts
 const geistSans = localFont({
@@ -24,7 +24,8 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [web3, setWeb3] = useState(null);
   const [verificationSuccess, setVerificationSuccess] = useState(false); 
-  const [validatorAddress, setValidatorAddress] = useState(null); // Change to validatorAddress
+  const [validatorAddress, setValidatorAddress] = useState(null); 
+  const [verificationResponse, setVerificationResponse] = useState(null); 
 
   const EVMTaskAllocator = "0x19a567b3b212a5b35bA0E3B600FbEd5c2eE9083d";
 
@@ -55,13 +56,13 @@ export default function Home() {
         if (res) {
           const isValid = await verifyOffChainResult(res, schemaId);
           if (isValid) {
-            console.log("Off-chain verification successful");
+            setVerificationResponse(res); 
           } else {
             throw new Error("Off-chain verification failed");
           }
         }
       } else {
-        console.log("Please install TransGate");
+        console.error("Please install TransGate");
       }
     } catch (error) {
       console.error("Verification error: ", error);
@@ -81,7 +82,7 @@ export default function Home() {
         taskId,
         uHash,
         publicFieldsHash,
-        validatorAddress: vAddress, // Destructure the validatorAddress
+        validatorAddress: vAddress, 
         allocatorSignature,
         validatorSignature,
       } = res;
@@ -92,7 +93,7 @@ export default function Home() {
       // Allocator signature verification
       const allocatorParams = web3.eth.abi.encodeParameters(
         ["bytes32", "bytes32", "address"],
-        [taskIdHex, schemaIdHex, vAddress] // Use vAddress for verification
+        [taskIdHex, schemaIdHex, vAddress] 
       );
       console.log(allocatorParams);
 
@@ -124,8 +125,9 @@ export default function Home() {
       if (isAllocatorValid && isValidatorValid) {
         setValidatorAddress(vAddress);
         setVerificationSuccess(true); 
+        return res; 
       }
-      return isAllocatorValid && isValidatorValid;
+      return false;
     } catch (error) {
       console.error("Off-chain verification failed", error);
       return false;
@@ -135,10 +137,16 @@ export default function Home() {
   const handleGoBack = () => {
     setVerificationSuccess(false);
     setValidatorAddress(null);
+    setVerificationResponse(null);
   };
 
   if (verificationSuccess) {
-    return <VerificationSuccess validatorAddress={validatorAddress} handleGoBack={handleGoBack} />;
+    return (
+      <VerificationSuccess
+        handleGoBack={handleGoBack}
+        res={verificationResponse} 
+      />
+    );
   }
 
   return (
